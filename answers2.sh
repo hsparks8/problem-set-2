@@ -13,7 +13,7 @@ genes="$datasets/bed/genes.hg19.bed.gz"
 genome="$datasets/genome/hg19.genome"
 
 answer_1=$(bedtools intersect -a $TFBS -b $H3K \
-    | awk 'BEGIN {OFS="\t"} ($4=="CTCf") {print 40 $3-$2}' \
+    | awk 'BEGIN {OFS="\t"} ($4=="CTCF") {print $0, $3-$2}' \
     | sort -k5nr \
     | cut -f 5 \
     | head -n 1)
